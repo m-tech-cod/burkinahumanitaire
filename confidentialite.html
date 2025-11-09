@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de confidentialité - Association Burkina Humanitaire</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #21B710;
+            --secondary-color: #B8692E;
+            --light-color: #F6E9D8;
+            --text-color: #333;
+            --white: #fff;
+            --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            background-color: var(--white);
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text strong {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .logo-text span {
+            font-size: 0.9rem;
+        }
+
+        .navbar {
+            position: relative;
+        }
+
+        .hamburger {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: none;
+        }
+
+        .menu {
+            display: flex;
+        }
+
+        .menu ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu a {
+            color: var(--primary-color);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .menu a:hover {
+            color: var(--secondary-color);
+        }
+
+        .menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        .menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            background-color: var(--secondary-color);
+            border-radius: 20px;
+            color: var(--white);
+            margin: 30px auto;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Privacy Section */
+        .privacy-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .privacy-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .privacy-intro {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .privacy-intro p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .privacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .privacy-card {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .privacy-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .privacy-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .privacy-card p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .privacy-card a {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .privacy-card a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .privacy-full {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e1e1e1;
+        }
+
+        .privacy-full h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .privacy-full p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .privacy-full ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .privacy-full li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .privacy-full li::before {
+            content: '•';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .privacy-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .privacy-table th,
+        .privacy-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .privacy-table th {
+            background-color: #f8f9fa;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .privacy-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .highlight {
+            background-color: #f0f9f0;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary-color);
+            margin: 20px 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #94f089;
+            border-radius: 20px;
+            padding: 50px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .footer-links h3,
+        .footer-contact h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--secondary-color);
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Partners Section */
+        .partners-section {
+            margin: 40px 0;
+            padding: 30px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .partners-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .partner-category {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .partner-category h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .partner-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .partner-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+        }
+
+        .partner-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .partner-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .partner-info {
+            flex: 1;
+        }
+
+        .partner-info strong {
+            color: var(--text-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .partner-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Footer bottom */
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            position: relative;
+        }
+
+        .legal-links a:not(:last-child)::after {
+            content: '|';
+            position: absolute;
+            right: -12px;
+            color: var(--text-color);
+        }
+
+        .don-link {
+            background-color: var(--secondary-color);
+            padding: 8px 20px;
+            border-radius: 5px;
+            color: var(--white);
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .don-link:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .menu {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: var(--white);
+                width: 200px;
+                box-shadow: var(--shadow);
+                border-radius: 5px;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s;
+            }
+
+            .menu.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .menu ul {
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .privacy-content {
+                padding: 25px;
+            }
+
+            .privacy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .privacy-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-logo {
+                align-items: center;
+            }
+
+            .footer-contact p {
+                justify-content: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .legal-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 40px 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .privacy-content {
+                padding: 20px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .legal-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .legal-links a:not(:last-child)::after {
+                display: none;
+            }
+
+            .partner-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .partner-logo {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="Logo Association Burkina Humanitaire">
+                <div class="logo-text">
+                    <strong>ASSOCIATION</strong>
+                    <span>BURKINA HUMANITAIRE</span>
+                </div>
+            </div>
+            <div class="navbar">
+                <i class="fa-solid fa-bars hamburger"></i>
+                <nav class="menu">
+                    <ul>
+                        <li>
+                            <a href="index.html">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="about.html">À Propos</a>
+                        </li>
+                        <li>
+                            <a href="projets.html">Projets</a>
+                        </li>
+                        <li>
+                            <a href="galerie.html">Galerie Photo</a>
+                        </li>
+                        <li>
+                            <a href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Politique de Confidentialité</h1>
+                <p>Protection de vos données personnelles et respect de votre vie privée</p>
+                <div class="hero-actions">
+                    <a href="contact.html" class="btn">Nous Contacter</a>
+                    <a href="don.html" class="btn btn-secondary">Faire un Don</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/imgpage_acceuil.jpg" alt="Association Burkina Humanitaire">
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Section -->
+    <main class="privacy-section">
+        <div class="container">
+            <h2 class="section-title">Protection de vos données</h2>
+            
+            <div class="privacy-content">
+                <div class="privacy-intro">
+                    <p>L'Association Burkina Humanitaire s'engage à protéger vos données personnelles et à respecter votre vie privée. Cette politique explique comment nous collectons, utilisons et protégeons vos informations.</p>
+                </div>
+                
+                <div class="privacy-grid">
+                    <div class="privacy-card">
+                        <h3>Collecte des données</h3>
+                        <p>Nous collectons uniquement les informations nécessaires à nos activités : nom, prénom, adresse email, et informations de contact.</p>
+                    </div>
+                    
+                    <div class="privacy-card">
+                        <h3>Utilisation des données</h3>
+                        <p>Vos données sont utilisées exclusivement pour la gestion de l'association, l'envoi d'informations et la communication sur nos actions.</p>
+                    </div>
+                    
+                    <div class="privacy-card">
+                        <h3>Protection des données</h3>
+                        <p>Nous mettons en œuvre des mesures techniques et organisationnelles pour protéger vos données contre tout accès non autorisé.</p>
+                    </div>
+                    
+                    <div class="privacy-card">
+                        <h3>Partage des données</h3>
+                        <p>Vos données ne sont jamais vendues, louées ou partagées avec des tiers à des fins commerciales.</p>
+                    </div>
+                </div>
+                
+                <div class="privacy-full">
+                    <h3>Types de données collectées</h3>
+                    <p>Nous pouvons collecter les types de données personnelles suivants :</p>
+                    <ul>
+                        <li>Informations d'identification (nom, prénom)</li>
+                        <li>Coordonnées (adresse email, numéro de téléphone)</li>
+                        <li>Informations de transaction (dons, adhésions)</li>
+                        <li>Données de communication (échanges par email ou téléphone)</li>
+                    </ul>
+                    
+                    <h3>Finalités du traitement</h3>
+                    <table class="privacy-table">
+                        <thead>
+                            <tr>
+                                <th>Finalité</th>
+                                <th>Données concernées</th>
+                                <th>Base légale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gestion des dons et adhésions</td>
+                                <td>Nom, prénom, coordonnées</td>
+                                <td>Exécution contractuelle</td>
+                            </tr>
+                            <tr>
+                                <td>Envoi d'informations</td>
+                                <td>Adresse email</td>
+                                <td>Consentement</td>
+                            </tr>
+                            <tr>
+                                <td>Communication sur nos actions</td>
+                                <td>Nom, prénom, coordonnées</td>
+                                <td>Intérêt légitime</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Conservation des données</h3>
+                    <p>Vos données sont conservées pendant la durée nécessaire à la réalisation des finalités pour lesquelles elles sont collectées :</p>
+                    <ul>
+                        <li>Données des donateurs : 10 ans à compter du dernier don</li>
+                        <li>Données des adhérents : durée de l'adhésion + 5 ans</li>
+                        <li>Listes de diffusion : jusqu'au désabonnement</li>
+                    </ul>
+                    
+                    <div class="highlight">
+                        <h3>Vos droits</h3>
+                        <p>Conformément à la réglementation sur la protection des données, vous disposez des droits suivants :</p>
+                        <ul>
+                            <li>Droit d'accès à vos données personnelles</li>
+                            <li>Droit de rectification des données inexactes</li>
+                            <li>Droit à l'effacement de vos données</li>
+                            <li>Droit à la limitation du traitement</li>
+                            <li>Droit d'opposition au traitement</li>
+                            <li>Droit à la portabilité de vos données</li>
+                        </ul>
+                        <p>Pour exercer ces droits, contactez-nous à : <a href="mailto:a.burkinahumanitaire@gmail.com">a.burkinahumanitaire@gmail.com</a></p>
+                    </div>
+                    
+                    <h3>Cookies et traceurs</h3>
+                    <p>Notre site utilise des cookies pour améliorer votre expérience utilisateur. Vous pouvez configurer votre navigateur pour refuser les cookies.</p>
+                    
+                    <h3>Modification de la politique</h3>
+                    <p>Nous nous réservons le droit de modifier cette politique de confidentialité. Toute modification sera publiée sur cette page avec la date de mise à jour.</p>
+                    
+                    <h3>Contact</h3>
+                    <p>Pour toute question relative à cette politique de confidentialité ou à la protection de vos données, vous pouvez nous contacter :</p>
+                    <p><strong>Association Burkina Humanitaire</strong><br>
+                    Ouagadougou, Quartier Rayongo<br>
+                    Arrondissement 11 secteur 47<br>
+                    Email : <a href="mailto:a.burkinahumanitaire@gmail.com">a.burkinahumanitaire@gmail.com</a><br>
+                    Téléphone : <a href="tel:+22664893838">+226 64 89 38 38</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <img src="images/logo.jpg" alt="Logo Association Burkina Humanitaire">
+                    <p>&copy; 2025 Association - Burkina Humanitaire</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                        <li><a href="projets.html">Projets</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> a.burkinahumanitaire@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +226 64 89 38 38</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100064843534548" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://wa.me/22664893838" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:a.burkinahumanitaire@gmail.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section partenaires améliorée -->
+            <div class="partners-section">
+                <h3>Nos Partenaires</h3>
+                <div class="partners-grid">
+                    <div class="partner-category">
+                        <h4>Partenaires Organisationnels</h4>
+                        <div class="partner-list">
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <img src="images/hison.jpg" alt="Logo HISON">
+                                </div>
+                                <div class="partner-info">
+                                    <strong>HISON</strong>
+                                    <p>Basé en Suisse</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <img src="images/paper.jpg" alt="Logo Papper for All">
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Papper for All</strong>
+                                    <p>Basé en France</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-category">
+                        <h4>Partenaires Particuliers</h4>
+                        <div class="partner-list">
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Brigitte Way</strong>
+                                    <p>France</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Laeticia Meyo</strong>
+                                    <p>USA</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Brigitte Hannah Cambrier</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Sandrine Foucault</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Anne Gaelle</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Murielle Boulard</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Kendal Roy</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="legal-links">
+                    <a href="mentions_legales.html">Mentions légales</a>
+                    <a href="confidentialite.html">Politique de confidentialité</a>
+                </div>
+                <a href="don.html" class="don-link">Faire un Don</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const menu = document.querySelector('.menu');
+            
+            hamburger.addEventListener('click', function() {
+                menu.classList.toggle('active');
+            });
+            
+            // Fermer le menu en cliquant à l'extérieur
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.navbar')) {
+                    menu.classList.remove('active');
+                }
+            });
+            
+            // Fermer le menu en redimensionnant la fenêtre
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    menu.classList.remove('active');
+                }
+            });
+            
+            // Animation pour les cartes au défilement
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Appliquer l'animation aux cartes
+            const cards = document.querySelectorAll('.privacy-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

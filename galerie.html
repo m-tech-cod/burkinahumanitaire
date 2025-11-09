@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie photos - Association Burkina Humanitaire</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #21B710;
+            --secondary-color: #B8692E;
+            --light-color: #F6E9D8;
+            --text-color: #333;
+            --white: #fff;
+            --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            background-color: var(--white);
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text strong {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .logo-text span {
+            font-size: 0.9rem;
+        }
+
+        .navbar {
+            position: relative;
+        }
+
+        .hamburger {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: none;
+        }
+
+        .menu {
+            display: flex;
+        }
+
+        .menu ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu a {
+            color: var(--primary-color);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .menu a:hover {
+            color: var(--secondary-color);
+        }
+
+        .menu a.active {
+            color: var(--secondary-color);
+        }
+
+        .menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        .menu a:hover::after,
+        .menu a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section - Amélioré avec le style de la page À propos */
+        .hero {
+            padding: 60px 0;
+            background-color: var(--secondary-color);
+            border-radius: 20px;
+            color: var(--white);
+            margin: 30px auto;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        /* Section Header - Amélioré avec le style de la page À propos */
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 80px 0;
+        }
+
+        /* Project Gallery - Amélioré avec animations */
+        .project-gallery {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .project-title {
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .project-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .gallery-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .slides-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .prev-btn, .next-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+
+        .prev-btn:hover, .next-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .dots-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: var(--primary-color);
+        }
+
+        /* Thumbnail Gallery - Amélioré */
+        .thumbnail-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .thumbnail {
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        /* Footer - Amélioré avec le style de la page À propos */
+        footer {
+            background-color: #94f089;
+            border-radius: 20px;
+            padding: 50px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .footer-links h3,
+        .footer-contact h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--secondary-color);
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Section partenaires - Amélioré avec le style de la page À propos */
+        .partners-section {
+            margin: 40px 0;
+            padding: 30px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .partners-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.5rem;
+            position: relative;
+        }
+
+        .partners-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .partner-category {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .partner-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .partner-category h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .partner-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .partner-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+        }
+
+        .partner-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .partner-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .partner-info {
+            flex: 1;
+        }
+
+        .partner-info strong {
+            color: var(--text-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .partner-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Footer bottom amélioré */
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            position: relative;
+        }
+
+        .legal-links a:not(:last-child)::after {
+            content: '|';
+            position: absolute;
+            right: -12px;
+            color: var(--text-color);
+        }
+
+        .don-link {
+            background-color: var(--secondary-color);
+            padding: 8px 20px;
+            border-radius: 5px;
+            color: var(--white);
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .don-link:hover {
+            background-color: var(--primary-color);
+        }
+
+        img{
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
+
+        /* Animation pour les slides */
+        @keyframes fadeIn {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
+        .fade {
+            animation-name: fadeIn;
+            animation-duration: 1s;
+        }
+
+        /* Animation d'apparition des galeries */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-gallery:nth-child(1) { animation-delay: 0.1s; }
+        .project-gallery:nth-child(2) { animation-delay: 0.2s; }
+        .project-gallery:nth-child(3) { animation-delay: 0.3s; }
+        .project-gallery:nth-child(4) { animation-delay: 0.4s; }
+        .project-gallery:nth-child(5) { animation-delay: 0.5s; }
+        .project-gallery:nth-child(6) { animation-delay: 0.6s; }
+        .project-gallery:nth-child(7) { animation-delay: 0.7s; }
+        .project-gallery:nth-child(8) { animation-delay: 0.8s; }
+
+        /* Responsive Design - Amélioré */
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .slide img {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .menu {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: var(--white);
+                width: 200px;
+                box-shadow: var(--shadow);
+                border-radius: 5px;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s;
+                z-index: 1000;
+            }
+
+            .menu.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .menu ul {
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .gallery-section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .project-title {
+                font-size: 1.5rem;
+            }
+            
+            .slide img {
+                height: 350px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .legal-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .legal-links a:not(:last-child)::after {
+                display: none;
+            }
+
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .thumbnail-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 40px 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .gallery-section {
+                padding: 40px 0;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .project-title {
+                font-size: 1.3rem;
+            }
+            
+            .slide img {
+                height: 250px;
+            }
+            
+            .gallery-controls {
+                flex-wrap: wrap;
+            }
+            
+            .thumbnail-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .legal-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .partner-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .partner-logo {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="Logo Association Burkina Humanitaire">
+                <div class="logo-text">
+                    <strong>ASSOCIATION</strong>
+                    <span>BURKINA HUMANITAIRE</span>
+                </div>
+            </div>
+            <div class="navbar">
+                <i class="fa-solid fa-bars hamburger"></i>
+                <nav class="menu">
+                    <ul>
+                        <li>
+                            <a href="index.html">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="about.html">À Propos</a>
+                        </li>
+                        <li>
+                            <a href="projets.html">Projets</a>
+                        </li>
+                        <li>
+                            <a href="galerie.html" class="active">Galerie Photo</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Notre Galerie Photos</h1>
+                <p>Découvrez en images nos réalisations et l'impact de nos actions sur le terrain.</p>
+                <div class="hero-actions">
+                    <a href="#galerie" class="btn">Voir la galerie</a>
+                    <a href="don.html" class="btn btn-secondary">Soutenir nos actions</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/imgpage_acceuil.jpg" alt="Actions humanitaires">
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <main>
+        <section id="galerie" class="gallery-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Nos preuves de réalisations</h2>
+                    <p>
+                        Explorez nos différentes galeries photos pour voir l'impact concret de nos actions 
+                        sur le terrain et dans la vie des communautés que nous soutenons.
+                    </p>
+                </div>
+
+                <!-- Projet 1 - Construction du lycée -->
+                <div class="project-gallery">
+                    <h3 class="project-title">Construction d'un lycée à Bindé (2021)</h3>
+                    <div class="gallery-container" data-index="1">
+                        <div class="slides-container">
+                            <div class="slide fade">
+                                <img src="images/img1.jpg" alt="Construction du lycée à Bindé">
+                                <div class="slide-caption">Construction en cours du lycée</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img1.1.jpg" alt="Lycée de Bindé terminé">
+                                <div class="slide-caption">Lycée de Bindé après construction</div>
+                            </div>
+                        </div>
+                        <div class="gallery-controls">
+                            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <div class="dots-container">
+                                <span class="dot active" data-slide="0"></span>
+                                <span class="dot" data-slide="1"></span>
+                            </div>
+                            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 2 - Arbre de Noël -->
+                <div class="project-gallery">
+                    <h3 class="project-title">Projet Annuel de l'Arbre de Noël</h3>
+                    <div class="gallery-container" data-index="2">
+                        <div class="slides-container">
+                            <div class="slide fade">
+                                <img src="images/img2.0.jpg" alt="Préparation de l'Arbre de Noël">
+                                <div class="slide-caption">Préparation des festivités</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img2.jpg" alt="Enfants pendant l'Arbre de Noël">
+                                <div class="slide-caption">Les enfants pendant les célébrations</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img2.1.jpg" alt="Distribution de cadeaux">
+                                <div class="slide-caption">Distribution des cadeaux de Noël</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img2.2.jpg" alt="Activités avec les enfants">
+                                <div class="slide-caption">Activités récréatives avec les enfants</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img2.3.jpg" alt="Spectacle de Noël">
+                                <div class="slide-caption">Spectacle organisé pour les enfants</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img2.4.jpg" alt="Décoration de Noël">
+                                <div class="slide-caption">Décoration festive de l'événement</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img2.5.jpg" alt="Group photo">
+                                <div class="slide-caption">Photo de groupe avec les bénéficiaires</div>
+                            </div>
+                        </div>
+                        <div class="gallery-controls">
+                            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <div class="dots-container">
+                                <span class="dot active" data-slide="0"></span>
+                                <span class="dot" data-slide="1"></span>
+                                <span class="dot" data-slide="2"></span>
+                                <span class="dot" data-slide="3"></span>
+                                <span class="dot" data-slide="4"></span>
+                                <span class="dot" data-slide="5"></span>
+                                <span class="dot" data-slide="6"></span>
+                            </div>
+                            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 3 - Projet poule -->
+                <div class="project-gallery">
+                    <h3 class="project-title">Projet "Un élève, une poule"</h3>
+                    <div class="gallery-container" data-index="3">
+                        <div class="slides-container">
+                            <div class="slide fade">
+                                <img src="images/img3.jpg" alt="Distribution des poules">
+                                <div class="slide-caption">Distribution des poules aux élèves</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img3.1.jpg" alt="Élèves avec leurs poules">
+                                <div class="slide-caption">Les élèves avec leurs nouvelles poules</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img3.2.jpg" alt="Formation sur l'élevage">
+                                <div class="slide-caption">Formation sur les techniques d'élevage</div>
+                            </div>
+                        </div>
+                        <div class="gallery-controls">
+                            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <div class="dots-container">
+                                <span class="dot active" data-slide="0"></span>
+                                <span class="dot" data-slide="1"></span>
+                                <span class="dot" data-slide="2"></span>
+                            </div>
+                            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 4 - Sorties éducatives -->
+                <div class="project-gallery">
+                    <h3 class="project-title">Sorties de détente et d'études pour les élèves</h3>
+                    <div class="gallery-container" data-index="4">
+                        <div class="slides-container">
+                            <div class="slide fade">
+                                <img src="images/img4.1.jpg" alt="Sortie éducative">
+                                <div class="slide-caption">Sortie éducative avec les élèves</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img4.2.jpg" alt="Activités en plein air">
+                                <div class="slide-caption">Activités récréatives en plein air</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img4.3.jpg" alt="Moment de détente">
+                                <div class="slide-caption">Moment de détente pendant la sortie</div>
+                            </div>
+                        </div>
+                        <div class="gallery-controls">
+                            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <div class="dots-container">
+                                <span class="dot active" data-slide="0"></span>
+                                <span class="dot" data-slide="1"></span>
+                                <span class="dot" data-slide="2"></span>
+                            </div>
+                            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 5 - Parrainage -->
+                <div class="project-gallery">
+                    <h3 class="project-title">Parrainage Scolaire</h3>
+                    <div class="gallery-container" data-index="5">
+                        <div class="slides-container">
+                            <div class="slide fade">
+                                <img src="images/img5.jpg" alt="Enfants bénéficiaires">
+                                <div class="slide-caption">Enfants bénéficiaires du parrainage</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img5.1.jpg" alt="Distribution de fournitures">
+                                <div class="slide-caption">Distribution de fournitures scolaires</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img5.2.jpg" alt="Suivi des élèves">
+                                <div class="slide-caption">Suivi personnalisé des élèves</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img5.3.jpg" alt="Cérémonie de parrainage">
+                                <div class="slide-caption">Cérémonie de lancement du parrainage</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img5.4.jpg" alt="Élèves en classe">
+                                <div class="slide-caption">Élèves bénéficiaires en classe</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img5.5.jpg" alt="Remise de certificats">
+                                <div class="slide-caption">Remise de certificats aux élèves</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img5.6.jpg" alt="Activités extrascolaires">
+                                <div class="slide-caption">Activités extrascolaires organisées</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img5.7.jpg" alt="Rencontre avec les parents">
+                                <div class="slide-caption">Rencontre avec les parents d'élèves</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img5.8.jpg" alt="Suivi des progrès">
+                                <div class="slide-caption">Suivi des progrès académiques</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img5.9.jpg" alt="Célébration des réussites">
+                                <div class="slide-caption">Célébration des réussites scolaires</div>
+                            </div>
+                        </div>
+                        <div class="gallery-controls">
+                            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <div class="dots-container">
+                                <span class="dot active" data-slide="0"></span>
+                                <span class="dot" data-slide="1"></span>
+                                <span class="dot" data-slide="2"></span>
+                                <span class="dot" data-slide="3"></span>
+                                <span class="dot" data-slide="4"></span>
+                                <span class="dot" data-slide="5"></span>
+                                <span class="dot" data-slide="6"></span>
+                                <span class="dot" data-slide="7"></span>
+                                <span class="dot" data-slide="8"></span>
+                                <span class="dot" data-slide="9"></span>
+                            </div>
+                            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 6 - Formation informatique -->
+                <div class="project-gallery">
+                    <h3 class="project-title">Projet de formation en Informatique</h3>
+                    <div class="gallery-container" data-index="6">
+                        <div class="slides-container">
+                            <div class="slide fade">
+                                <img src="images/img6.jpg" alt="Salle de formation informatique">
+                                <div class="slide-caption">Salle équipée pour la formation</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img6.1.jpg" alt="Participants en formation">
+                                <div class="slide-caption">Participants pendant la session</div>
+                            </div>
+                        </div>
+                        <div class="gallery-controls">
+                            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <div class="dots-container">
+                                <span class="dot active" data-slide="0"></span>
+                                <span class="dot" data-slide="1"></span>
+                            </div>
+                            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 7 - Formation cuisine -->
+                <div class="project-gallery">
+                    <h3 class="project-title">Projet formation en cuisine</h3>
+                    <div class="gallery-container" data-index="7">
+                        <div class="slides-container">
+                            <div class="slide fade">
+                                <img src="images/img7.jpg" alt="Atelier de cuisine">
+                                <div class="slide-caption">Atelier pratique de cuisine</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img7.1.jpg" alt="Préparation des plats">
+                                <div class="slide-caption">Préparation des plats traditionnels</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img7.2.jpg" alt="Formation aux techniques">
+                                <div class="slide-caption">Formation aux techniques culinaires</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img7.3.jpg" alt="Présentation des plats">
+                                <div class="slide-caption">Présentation des plats préparés</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img7.4.jpg" alt="Diplômés de la formation">
+                                <div class="slide-caption">Diplômés de la formation cuisine</div>
+                            </div>
+                        </div>
+                        <div class="gallery-controls">
+                            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <div class="dots-container">
+                                <span class="dot active" data-slide="0"></span>
+                                <span class="dot" data-slide="1"></span>
+                                <span class="dot" data-slide="2"></span>
+                                <span class="dot" data-slide="3"></span>
+                                <span class="dot" data-slide="4"></span>
+                            </div>
+                            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 8 - Autres activités -->
+                <div class="project-gallery">
+                    <h3 class="project-title">Autres activités et réalisations</h3>
+                    <div class="gallery-container" data-index="8">
+                        <div class="slides-container">
+                            <div class="slide fade">
+                                <img src="images/img8.jpg" alt="Activité communautaire">
+                                <div class="slide-caption">Activité communautaire organisée</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img8.1.jpg" alt="Distribution de matériel">
+                                <div class="slide-caption">Distribution de matériel éducatif</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img8.2.jpg" alt="Visite sur le terrain">
+                                <div class="slide-caption">Visite de terrain pour évaluation</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img8.3.jpg" alt="Réunion de coordination">
+                                <div class="slide-caption">Réunion de coordination d'équipe</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img8.4.jpg" alt="Célébration des succès">
+                                <div class="slide-caption">Célébration des succès du projet</div>
+                            </div>
+                            <div class="slide fade">
+                                <img src="images/img8.5.jpg" alt="Événement de clôture">
+                                <div class="slide-caption">Événement de clôture du projet</div>
+                            </div>
+                        </div>
+                        <div class="gallery-controls">
+                            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <div class="dots-container">
+                                <span class="dot active" data-slide="0"></span>
+                                <span class="dot" data-slide="1"></span>
+                                <span class="dot" data-slide="2"></span>
+                                <span class="dot" data-slide="3"></span>
+                                <span class="dot" data-slide="4"></span>
+                                <span class="dot" data-slide="5"></span>
+                            </div>
+                            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer amélioré -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <img src="images/logo.jpg" alt="Logo Association Burkina Humanitaire">
+                    <p>&copy; 2025 Association - Burkina Humanitaire</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                        <li><a href="projets.html">Projets</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> a.burkinahumanitaire@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +226 64 89 38 38</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100064843534548" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://wa.me/22664893838" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:a.burkinahumanitaire@gmail.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section partenaires améliorée avec le style de la page À propos -->
+            <div class="partners-section">
+                <h3>Nos Partenaires</h3>
+                <div class="partners-grid">
+                    <div class="partner-category">
+                        <h4>Partenaires Organisationnels</h4>
+                        <div class="partner-list">
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <img src="images/hison.jpg" alt="Logo HISON">
+                                </div>
+                                <div class="partner-info">
+                                    <strong>HISON</strong>
+                                    <p>Basé en Suisse</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <img src="images/paper.jpg" alt="Logo Papper for All">
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Papper for All</strong>
+                                    <p>Basé en France</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-category">
+                        <h4>Partenaires Particuliers</h4>
+                        <div class="partner-list">
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Brigitte Way</strong>
+                                    <p>France</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Laeticia Meyo</strong>
+                                    <p>USA</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Brigitte Hannah Cambrier</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Sandrine Foucault</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Anne Gaelle</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Murielle Boulard</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Kendal Roy</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="legal-links">
+                    <a href="mentions_legales.html">Mentions légales</a>
+                    <a href="confidentialite.html">Politique de confidentialité</a>
+                </div>
+                <a href="don.html" class="don-link">Faire un Don</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const menu = document.querySelector('.menu');
+            
+            if (hamburger && menu) {
+                hamburger.addEventListener('click', function() {
+                    menu.classList.toggle('active');
+                });
+                
+                // Fermer le menu en cliquant à l'extérieur
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.navbar')) {
+                        menu.classList.remove('active');
+                    }
+                });
+                
+                // Fermer le menu en redimensionnant la fenêtre
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        menu.classList.remove('active');
+                    }
+                });
+            }
+
+            // Initialiser toutes les galeries
+            initAllGalleries();
+            
+            // Animation au scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observer les galeries de projet
+            document.querySelectorAll('.project-gallery').forEach(gallery => {
+                observer.observe(gallery);
+            });
+
+            // Animation pour les catégories de partenaires
+            const partnerCategories = document.querySelectorAll('.partner-category');
+            partnerCategories.forEach(category => {
+                category.style.opacity = '0';
+                category.style.transform = 'translateY(20px)';
+                category.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            const partnerObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            partnerCategories.forEach(category => {
+                partnerObserver.observe(category);
+            });
+        });
+
+        // Fonction pour initialiser toutes les galeries
+        function initAllGalleries() {
+            const galleries = document.querySelectorAll('.gallery-container');
+            
+            galleries.forEach((gallery, galleryIndex) => {
+                const slidesContainer = gallery.querySelector('.slides-container');
+                const slides = gallery.querySelectorAll('.slide');
+                const prevBtn = gallery.querySelector('.prev-btn');
+                const nextBtn = gallery.querySelector('.next-btn');
+                const dots = gallery.querySelectorAll('.dot');
+                
+                let currentSlide = 0;
+                const totalSlides = slides.length;
+                
+                // Fonction pour mettre à jour la galerie
+                function updateGallery() {
+                    // Mettre à jour la position
+                    slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    
+                    // Mettre à jour les dots
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentSlide);
+                    });
+                    
+                    // Ajouter l'animation fade
+                    slides.forEach(slide => slide.classList.remove('fade'));
+                    slides[currentSlide].classList.add('fade');
+                    
+                    // Mettre à jour l'accessibilité
+                    slides.forEach((slide, index) => {
+                        if (index === currentSlide) {
+                            slide.removeAttribute('aria-hidden');
+                            slide.querySelector('img').setAttribute('tabindex', '0');
+                        } else {
+                            slide.setAttribute('aria-hidden', 'true');
+                            slide.querySelector('img').setAttribute('tabindex', '-1');
+                        }
+                    });
+                }
+                
+                // Événements pour les boutons précédent/suivant
+                prevBtn.addEventListener('click', () => {
+                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                    updateGallery();
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                    updateGallery();
+                });
+                
+                // Événements pour les dots
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        currentSlide = index;
+                        updateGallery();
+                    });
+                });
+                
+                // Navigation au clavier
+                gallery.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                        updateGallery();
+                    } else if (e.key === 'ArrowRight') {
+                        currentSlide = (currentSlide + 1) % totalSlides;
+                        updateGallery();
+                    } else if (e.key >= '1' && e.key <= '9' && parseInt(e.key) <= totalSlides) {
+                        currentSlide = parseInt(e.key) - 1;
+                        updateGallery();
+                    }
+                });
+                
+                // Défilement automatique (optionnel)
+                let autoSlideInterval;
+                
+                function startAutoSlide() {
+                    autoSlideInterval = setInterval(() => {
+                        currentSlide = (currentSlide + 1) % totalSlides;
+                        updateGallery();
+                    }, 5000); // Change de slide toutes les 5 secondes
+                }
+                
+                function stopAutoSlide() {
+                    clearInterval(autoSlideInterval);
+                }
+                
+                // Démarrer le défilement automatique
+                startAutoSlide();
+                
+                // Arrêter le défilement automatique quand la souris est sur la galerie
+                gallery.addEventListener('mouseenter', stopAutoSlide);
+                gallery.addEventListener('mouseleave', startAutoSlide);
+                
+                // Mettre à jour l'accessibilité
+                gallery.setAttribute('tabindex', '0');
+                gallery.setAttribute('aria-label', `Galerie ${galleryIndex + 1} - ${totalSlides} images, utilisez les flèches gauche et droite pour naviguer`);
+                
+                // Touches d'accessibilité pour les dots
+                dots.forEach((dot, index) => {
+                    dot.setAttribute('tabindex', '0');
+                    dot.setAttribute('aria-label', `Aller à l'image ${index + 1}`);
+                    dot.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            currentSlide = index;
+                            updateGallery();
+                        }
+                    });
+                });
+                
+                // Initialiser la galerie
+                updateGallery();
+            });
+        }
+
+        // Gestion du chargement des images
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            
+            images.forEach(img => {
+                // Ajouter un gestionnaire d'erreur pour les images manquantes
+                img.addEventListener('error', function() {
+                    this.alt = 'Image non disponible';
+                    this.style.backgroundColor = '#f0f0f0';
+                    this.style.minHeight = '200px';
+                    this.style.display = 'flex';
+                    this.style.alignItems = 'center';
+                    this.style.justifyContent = 'center';
+                    this.style.color = '#666';
+                    this.innerHTML = '<span>Image non disponible</span>';
+                });
+                
+                // Ajouter un indicateur de chargement
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
+                });
+                
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s';
+            });
+        });
+
+        // Amélioration du scroll fluide
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Gestion du redimensionnement de la fenêtre
+        window.addEventListener('resize', function() {
+            // Réinitialiser les galeries si nécessaire
+            document.querySelectorAll('.gallery-container').forEach(gallery => {
+                const slidesContainer = gallery.querySelector('.slides-container');
+                const currentSlide = gallery.querySelector('.dot.active').getAttribute('data-slide');
+                slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            });
+        });
+
+        // Amélioration des performances - lazy loading
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    </script>
+</body>
+</html>

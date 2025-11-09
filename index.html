@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil Association Burkina - Humanitaire</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #21B710;
+            --secondary-color: #B8692E;
+            --light-color: #F6E9D8;
+            --text-color: #333;
+            --white: #fff;
+            --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            background-color: var(--white);
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text strong {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .logo-text span {
+            font-size: 0.9rem;
+        }
+
+        .navbar {
+            position: relative;
+        }
+
+        .hamburger {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: none;
+        }
+
+        .menu {
+            display: flex;
+        }
+
+        .menu ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu a {
+            color: var(--primary-color);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .menu a:hover {
+            color: var(--secondary-color);
+        }
+
+        .menu a.active {
+            color: var(--secondary-color);
+        }
+
+        .menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        .menu a:hover::after,
+        .menu a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section - Amélioré */
+        .hero {
+            padding: 60px 0;
+            background-color: var(--secondary-color);
+            border-radius: 20px;
+            color: var(--white);
+            margin: 30px auto;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        /* Section Header - Amélioré avec le style de la page À propos */
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+        }
+
+        /* Projects Section - Amélioré avec animations */
+        .projects-section {
+            padding: 80px 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-icon {
+            background-color: var(--light-color);
+            padding: 25px;
+            text-align: center;
+        }
+
+        .project-icon i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .project-content p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        /* Animation d'apparition des cartes */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Stats Section - Nouvelle section */
+        .stats-section {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .value-title {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .value-description {
+            line-height: 1.6;
+        }
+
+        /* Call to Action - Amélioré */
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 20px;
+            margin: 40px auto;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-section .btn {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .cta-section .btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .cta-section .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .cta-section .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--secondary-color);
+        }
+
+        /* Footer - Amélioré avec le style de la page À propos */
+        footer {
+            background-color: #94f089;
+            border-radius: 20px;
+            padding: 50px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .footer-links h3,
+        .footer-contact h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--secondary-color);
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Section partenaires */
+        .partners-section {
+            margin: 40px 0;
+            padding: 30px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .partners-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.5rem;
+            position: relative;
+        }
+
+        .partners-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .partner-category {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .partner-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .partner-category h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .partner-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .partner-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+        }
+
+        .partner-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .partner-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .partner-info {
+            flex: 1;
+        }
+
+        .partner-info strong {
+            color: var(--text-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .partner-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Footer bottom amélioré */
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            position: relative;
+        }
+
+        .legal-links a:not(:last-child)::after {
+            content: '|';
+            position: absolute;
+            right: -12px;
+            color: var(--text-color);
+        }
+
+        .don-link {
+            background-color: var(--secondary-color);
+            padding: 8px 20px;
+            border-radius: 5px;
+            color: var(--white);
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .don-link:hover {
+            background-color: var(--primary-color);
+        }
+
+        .hero-image img, .logo img, .footer-logo img {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        }
+
+        /* Responsive Design - Amélioré */
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .menu {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: var(--white);
+                width: 200px;
+                box-shadow: var(--shadow);
+                border-radius: 5px;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s;
+                z-index: 1000;
+            }
+
+            .menu.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .menu ul {
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .projects-section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .legal-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .legal-links a:not(:last-child)::after {
+                display: none;
+            }
+
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 40px 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .projects-section {
+                padding: 40px 0;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .legal-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .partner-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .partner-logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="Logo Association Burkina Humanitaire">
+                <div class="logo-text">
+                    <strong>ASSOCIATION</strong>
+                    <span>BURKINA HUMANITAIRE</span>
+                </div>
+            </div>
+            <div class="navbar">
+                <i class="fa-solid fa-bars hamburger"></i>
+                <nav class="menu">
+                    <ul>
+                        <li>
+                            <a href="index.html" class="active">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="about.html">À Propos</a>
+                        </li>
+                        <li>
+                            <a href="projets.html">Projets</a>
+                        </li>
+                        <li>
+                            <a href="galerie.html">Galerie Photo</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Association Burkina Humanitaire</h1>
+                <p>Solidarité et espoir pour construire un avenir meilleur.</p>
+                <div class="hero-actions">
+                    <a href="projets.html" class="btn">Découvrir nos actions</a>
+                    <a href="don.html" class="btn btn-secondary">Faire un Don</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/imgpage_acceuil.jpg" alt="Actions humanitaires">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section - Nouvelle section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Projets réalisés</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Enfants parrainés</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Régions d'intervention</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2020</div>
+                    <div class="stat-label">Année de création</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <main>
+        <section class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Projets réalisés</h2>
+                    <p>
+                        Découvrez nos principales réalisations qui ont un impact concret 
+                        dans les communautés que nous soutenons au Burkina Faso.
+                    </p>
+                </div>
+                <div class="projects-grid">
+                    <!-- Projet 1 -->
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Infrastructures éducatives</h3>
+                            <p>2021: Construction d'un lycée à Bindé avec <strong>HISON</strong> pour améliorer l'apprentissage des élèves.</p>
+                            <a href="projets.html#ecole" class="btn">Lire la suite</a>
+                        </div>
+                    </div>
+
+                    <!-- Projet 2 -->
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Évènements & activités enfants</h3>
+                            <p>Depuis 2021: Arbre de Noël annuel à Guikofè avec <strong>Kendal Roy</strong> et sa communauté. Sorties éducatives et récréatives offertes chaque fin d'année scolaire.</p>
+                            <a href="projets.html#fete" class="btn">Lire la suite</a>
+                        </div>
+                    </div>
+
+                    <!-- Projet 3 -->
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Projets innovants</h3>
+                            <p>2023: Lancement du projet "Un élève, une poule" pour encourager l'autonomie des élèves.</p>
+                            <a href="projets.html#poule" class="btn">Lire la suite</a>
+                        </div>
+                    </div>
+
+                    <!-- Projet 4 -->
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Aide matérielle</h3>
+                            <p>Août 2024: Réception d'un conteneur de matériel scolaire grâce à <strong>HISON.</strong></p>
+                            <a href="projets.html#materiels" class="btn">Lire la suite</a>
+                        </div>
+                    </div>
+
+                    <!-- Projet 5 -->
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Parrainage scolaire</h3>
+                            <p>Plus de 20 enfants soutenus depuis la création de l'association grâce au parrainage.</p>
+                            <a href="projets.html#solidarite" class="btn">Lire la suite</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section - Amélioré avec le style de la page À propos -->
+        <section class="values-section">
+            <div class="container">
+                <h2 class="section-title">Nos Valeurs</h2>
+                <div class="values-grid">
+                    <!-- Valeur 1 -->
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 class="value-title">Solidarité</h3>
+                        <p class="value-description">
+                            Nous croyons en la force de la solidarité pour construire des communautés
+                            plus fortes et résilientes face aux défis du développement.
+                        </p>
+                    </div>
+
+                    <!-- Valeur 2 -->
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="value-title">Transparence</h3>
+                        <p class="value-description">
+                            Nous nous engageons à une gestion transparente de nos ressources
+                            et à rendre compte régulièrement de nos actions et résultats.
+                        </p>
+                    </div>
+
+                    <!-- Valeur 3 -->
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="value-title">Participation</h3>
+                        <p class="value-description">
+                            Nous favorisons la participation active des communautés dans
+                            la conception et la mise en œuvre de nos projets.
+                        </p>
+                    </div>
+
+                    <!-- Valeur 4 -->
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="value-title">Durabilité</h3>
+                        <p class="value-description">
+                            Nous concevons des projets durables qui répondent aux besoins
+                            actuels sans compromettre les ressources des générations futures.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta-section">
+            <div class="container">
+                <p>
+                    Vous souhaitez en savoir plus ou soutenir nos actions?
+                    Contactez-nous ou rejoignez nos projets.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn">Nous Contacter</a>
+                    <a href="don.html" class="btn btn-secondary">Soutenir nos Actions</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer amélioré -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <img src="images/logo.jpg" alt="Logo Association Burkina Humanitaire">
+                    <p>&copy; 2025 Association - Burkina Humanitaire</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                        <li><a href="projets.html">Projets</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> a.burkinahumanitaire@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +226 64 89 38 38</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100064843534548" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://wa.me/22664893838" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:a.burkinahumanitaire@gmail.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section partenaires améliorée avec le style de la page À propos -->
+            <div class="partners-section">
+                <h3>Nos Partenaires</h3>
+                <div class="partners-grid">
+                    <div class="partner-category">
+                        <h4>Partenaires Organisationnels</h4>
+                        <div class="partner-list">
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <img src="images/hison.jpg" alt="Logo HISON">
+                                </div>
+                                <div class="partner-info">
+                                    <strong>HISON</strong>
+                                    <p>Basé en Suisse</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <img src="images/paper.jpg" alt="Logo Papper for All">
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Papper for All</strong>
+                                    <p>Basé en France</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-category">
+                        <h4>Partenaires Particuliers</h4>
+                        <div class="partner-list">
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Brigitte Way</strong>
+                                    <p>France</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Laeticia Meyo</strong>
+                                    <p>USA</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Brigitte Hannah Cambrier</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Sandrine Foucault</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Anne Gaelle</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Murielle Boulard</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="partner-item">
+                                <div class="partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <strong>Kendal Roy</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="legal-links">
+                    <a href="mentions_legales.html">Mentions légales</a>
+                    <a href="confidentialite.html">Politique de confidentialité</a>
+                </div>
+                <a href="don.html" class="don-link">Faire un Don</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const menu = document.querySelector('.menu');
+            
+            if (hamburger && menu) {
+                hamburger.addEventListener('click', function() {
+                    menu.classList.toggle('active');
+                });
+                
+                // Fermer le menu en cliquant à l'extérieur
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.navbar')) {
+                        menu.classList.remove('active');
+                    }
+                });
+                
+                // Fermer le menu en redimensionnant la fenêtre
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        menu.classList.remove('active');
+                    }
+                });
+            }
+
+            // Animation au scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observer les cartes de projet
+            document.querySelectorAll('.project-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Animation pour les cartes de statistiques
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            const statsObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            statCards.forEach(card => {
+                statsObserver.observe(card);
+            });
+
+            // Animation pour les cartes de valeurs
+            const valueCards = document.querySelectorAll('.value-card');
+            valueCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            const valuesObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            valueCards.forEach(card => {
+                valuesObserver.observe(card);
+            });
+
+            // Animation pour les catégories de partenaires
+            const partnerCategories = document.querySelectorAll('.partner-category');
+            partnerCategories.forEach(category => {
+                category.style.opacity = '0';
+                category.style.transform = 'translateY(20px)';
+                category.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            const partnerObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            partnerCategories.forEach(category => {
+                partnerObserver.observe(category);
+            });
+        });
+
+        // Amélioration du scroll fluide
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Gestion du chargement des images
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            
+            images.forEach(img => {
+                // Ajouter un gestionnaire d'erreur pour les images manquantes
+                img.addEventListener('error', function() {
+                    this.alt = 'Image non disponible';
+                    this.style.backgroundColor = '#f0f0f0';
+                    this.style.minHeight = '200px';
+                    this.style.display = 'flex';
+                    this.style.alignItems = 'center';
+                    this.style.justifyContent = 'center';
+                    this.style.color = '#666';
+                    this.innerHTML = '<span>Image non disponible</span>';
+                });
+                
+                // Ajouter un indicateur de chargement
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
+                });
+                
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s';
+            });
+        });
+    </script>
+</body>
+</html>

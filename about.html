@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qui sommes-nous? Association Burkina - Humanitaire</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #21B710;
+            --secondary-color: #B8692E;
+            --light-color: #F6E9D8;
+            --text-color: #333;
+            --white: #fff;
+            --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            background-color: var(--white);
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text strong {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .logo-text span {
+            font-size: 0.9rem;
+        }
+
+        .navbar {
+            position: relative;
+        }
+
+        .hamburger {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: none;
+        }
+
+        .menu {
+            display: flex;
+        }
+
+        .menu ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu a {
+            color: var(--primary-color);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .menu a:hover {
+            color: var(--secondary-color);
+        }
+
+        .menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        .menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            background-color: var(--secondary-color);
+            border-radius: 20px;
+            color: var(--white);
+            margin: 30px auto;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .about-content strong {
+            color: var(--primary-color);
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--primary-color);
+        }
+
+        .member-name {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .member-role {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .member-description {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Objectives Section */
+        .objectives-section {
+            padding: 60px 0;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .objective-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .objective-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .objective-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .objective-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .objective-content p {
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .value-title {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .value-description {
+            line-height: 1.6;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #94f089;
+            border-radius: 20px;
+            padding: 50px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .footer-links h3,
+        .footer-contact h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--secondary-color);
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            position: relative;
+        }
+
+        .legal-links a:not(:last-child)::after {
+            content: '|';
+            position: absolute;
+            right: -12px;
+            color: var(--text-color);
+        }
+
+        .don-link {
+            background-color: var(--secondary-color);
+            padding: 8px 20px;
+            border-radius: 5px;
+            color: var(--white);
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .don-link:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Section partenaires dans le footer */
+        .footer-partners {
+            margin: 40px 0;
+            padding: 30px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-partners h3 {
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .footer-partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .footer-partner-category {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .footer-partner-category h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .footer-partner-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-partner-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+        }
+
+        .footer-partner-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .footer-partner-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .footer-partner-info {
+            flex: 1;
+        }
+
+        .footer-partner-info strong {
+            color: var(--text-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .footer-partner-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .menu {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: var(--white);
+                width: 200px;
+                box-shadow: var(--shadow);
+                border-radius: 5px;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s;
+            }
+
+            .menu.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .menu ul {
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .objectives-grid,
+            .values-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .legal-links {
+                justify-content: center;
+            }
+
+            .footer-partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-partner-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .footer-partner-logo {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 40px 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .legal-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .legal-links a:not(:last-child)::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="Logo Association Burkina Humanitaire">
+                <div class="logo-text">
+                    <strong>ASSOCIATION</strong>
+                    <span>BURKINA HUMANITAIRE</span>
+                </div>
+            </div>
+            <div class="navbar">
+                <i class="fa-solid fa-bars hamburger"></i>
+                <nav class="menu">
+                    <ul>
+                        <li>
+                            <a href="index.html">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="about.html">À Propos</a>
+                        </li>
+                        <li>
+                            <a href="projets.html">Projets</a>
+                        </li>
+                        <li>
+                            <a href="galerie.html">Galerie Photo</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Association Burkina Humanitaire</h1>
+                <p>Solidarité et espoir pour construire un avenir meilleur.</p>
+                <div class="hero-actions">
+                    <a href="projets.html" class="btn">Découvrir nos actions</a>
+                    <a href="don.html" class="btn btn-secondary">Faire un Don</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/imgpage_acceuil.jpg" alt="Actions humanitaires">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <main>
+        <section class="about-section">
+            <div class="container">
+                <h2 class="section-title">Qui sommes-nous?</h2>
+                <div class="about-content">
+                    <p>
+                        Créée en 2020, l'Association
+                        Burkina Humanitaire <strong>(ABH)</strong> est une organisation à but non lucratif.
+                    </p>
+                    <p>
+                        Elle soutient et initie des projets de développement durable et humanitaire, avec
+                        un engagement particulier dans les régions du <strong>Kadiogo</strong> et
+                        de <strong>Namkambé</strong> au Burkina Faso.
+                    </p>
+                    <p>
+                        Notre association s'engage à améliorer les conditions de vie des populations vulnérables
+                        en mettant en place des projets durables qui répondent aux besoins essentiels des communautés.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <div class="container">
+                <h2 class="section-title">Notre Équipe</h2>
+                <div class="team-grid">
+                    <!-- Membre 1 -->
+                    <div class="team-member">
+                        <img src="images/equipe-un.jpg" alt="Coordonateur National" class="member-photo">
+                        <h3 class="member-name">Pascal Bouda</h3>
+                        <p class="member-role">Coordonateur National</p>
+                        <p class="member-description">
+                            Pascal coordonne toutes les activités de l'association et assure le lien entre
+                            les différents partenaires et les communautés bénéficiaires.
+                        </p>
+                    </div>
+
+                    <!-- Membre 2 -->
+                    <div class="team-member">
+                        <img src="images/equipe-deux.jpg" alt="Trésorière" class="member-photo">
+                        <h3 class="member-name">ILBOUDO Sibdou</h3>
+                        <p class="member-role">Trésorière</p>
+                        <p class="member-description">
+                            Sibdou gère les finances de l'association avec transparence et rigueur,
+                            assurant une utilisation optimale des ressources pour nos projets.
+                        </p>
+                    </div>
+
+                    <!-- Membre 3 -->
+                    <div class="team-member">
+                        <img src="images/equipe-trois.jpg" alt="Secrétaire Générale" class="member-photo">
+                        <h3 class="member-name">ROUAMBA K. Agnès</h3>
+                        <p class="member-role">Secrétaire Générale</p>
+                        <p class="member-description">
+                            Agnès assure la coordination administrative et la communication
+                            interne et externe de l'association.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values-section">
+            <div class="container">
+                <h2 class="section-title">Nos Valeurs</h2>
+                <div class="values-grid">
+                    <!-- Valeur 1 -->
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 class="value-title">Solidarité</h3>
+                        <p class="value-description">
+                            Nous croyons en la force de la solidarité pour construire des communautés
+                            plus fortes et résilientes face aux défis du développement.
+                        </p>
+                    </div>
+
+                    <!-- Valeur 2 -->
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="value-title">Transparence</h3>
+                        <p class="value-description">
+                            Nous nous engageons à une gestion transparente de nos ressources
+                            et à rendre compte régulièrement de nos actions et résultats.
+                        </p>
+                    </div>
+
+                    <!-- Valeur 3 -->
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="value-title">Participation</h3>
+                        <p class="value-description">
+                            Nous favorisons la participation active des communautés dans
+                            la conception et la mise en œuvre de nos projets.
+                        </p>
+                    </div>
+
+                    <!-- Valeur 4 -->
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="value-title">Durabilité</h3>
+                        <p class="value-description">
+                            Nous concevons des projets durables qui répondent aux besoins
+                            actuels sans compromettre les ressources des générations futures.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Objectives Section -->
+        <section class="objectives-section">
+            <div class="container">
+                <h2 class="section-title">Nos Objectifs</h2>
+                <p class="about-content" style="margin-bottom: 40px;">
+                    Pour bâtir un Burkina plus solidaire et plus prospère, l'association <strong>Burkina Humanitaire</strong> concentre
+                    ses actions autour de plusieurs axes prioritaires qui traduisent concrètement sa mission: 
+                </p>
+                
+                <div class="objectives-grid">
+                    <!-- Objectif 1 -->
+                    <div class="objective-card">
+                        <div class="objective-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="objective-content">
+                            <h3>Education - Soutien aux structures éducatives</h3>
+                            <p>
+                                Nous travaillons pour améliorer les conditions de vie des enfants dans les écoles
+                                primaires et secondaires par le financement de la construction des infrastructures,
+                                l'équipement, l'achat de matériel scolaire, le financement des jardins scolaires et
+                                des activités récréatives, etc.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Objectif 2 -->
+                    <div class="objective-card">
+                        <div class="objective-icon">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="objective-content">
+                            <h3>Formation des jeunes</h3>
+                            <p>
+                                Nous initions et soutenons les jeunes pour des formations en élevage,
+                                couture, agriculture, coiffure, cuisine, informatique afin de leur ouvrir des
+                                opportunités de nouveaux métiers pour un Burkina meilleur.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Objectif 3 -->
+                    <div class="objective-card">
+                        <div class="objective-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="objective-content">
+                            <h3>Eau et assainissement - Faciliter l'accès à l'eau</h3>
+                            <p>
+                                Nous travaillons pour faciliter l'accès à l'eau au profit de la population
+                                pour leurs besoins de la vie quotidienne, l'agriculture et le bétail. 
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Objectif 4 -->
+                    <div class="objective-card">
+                        <div class="objective-icon">
+                            <i class="fas fa-clinic-medical"></i>
+                        </div>
+                        <div class="objective-content">
+                            <h3>Santé</h3>
+                            <p>
+                                Avec l'aide de nos partenaires, nous soutenons les centres de santé avec le
+                                matériel médical et la rénovation des centres de santé pour que la population puisse bénéficier
+                                d'un meilleur traitement. Nous prenons en charge également des soins des plus démunis.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Objectif 5 -->
+                    <div class="objective-card">
+                        <div class="objective-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="objective-content">
+                            <h3>Agriculture et épanouissement</h3>
+                            <p>
+                                Appuyer des initiatives agricoles et des activités d'épanouissement
+                                pour les jeunes et les femmes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Objectif 6 -->
+                    <div class="objective-card">
+                        <div class="objective-icon">
+                            <i class="fa fa-hand-holding-heart"></i>
+                        </div>
+                        <div class="objective-content">
+                            <h3>Parrainage</h3>
+                            <p>
+                                Parrainer un enfant ou un jeune, c'est le soutenir financièrement
+                                dans la durée pour lui permettre soit de continuer ses études, soit de faire
+                                une formation de son choix dans de bonnes conditions.
+                                Le parrainage est aussi un cadre d'échange entre le parrain/marraine et l'enfant.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta-section">
+            <div class="container">
+                <p>
+                    Vous souhaitez en savoir plus ou soutenir nos actions?
+                    Contactez-nous ou rejoignez nos projets.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn">Nous Contacter</a>
+                    <a href="don.html" class="btn btn-secondary">Soutenir nos Actions</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <img src="images/logo.jpg" alt="Logo Association Burkina Humanitaire">
+                    <p>&copy; 2025 Association - Burkina Humanitaire</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                        <li><a href="projets.html">Projets</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> a.burkinahumanitaire@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +226 64 89 38 38</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100064843534548" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://wa.me/22664893838" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:a.burkinahumanitaire@gmail.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-partners">
+                <h3>Nos Partenaires</h3>
+                <div class="footer-partners-grid">
+                    <div class="footer-partner-category">
+                        <h4>Partenaires Organisationnels</h4>
+                        <div class="footer-partner-list">
+                            <div class="footer-partner-item">
+                                <div class="footer-partner-logo">
+                                    <img src="images/hison.jpg" alt="Logo HISON">
+                                </div>
+                                <div class="footer-partner-info">
+                                    <strong>HISON</strong>
+                                    <p>Basé en Suisse</p>
+                                </div>
+                            </div>
+                            <div class="footer-partner-item">
+                                <div class="footer-partner-logo">
+                                    <img src="images/paper.jpg" alt="Logo Papper for All">
+                                </div>
+                                <div class="footer-partner-info">
+                                    <strong>Papper for All</strong>
+                                    <p>Basé en France</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-partner-category">
+                        <h4>Partenaires Particuliers</h4>
+                        <div class="footer-partner-list">
+                            <div class="footer-partner-item">
+                                <div class="footer-partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="footer-partner-info">
+                                    <strong>Brigitte Way</strong>
+                                    <p>France</p>
+                                </div>
+                            </div>
+                            <div class="footer-partner-item">
+                                <div class="footer-partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="footer-partner-info">
+                                    <strong>Laeticia Meyo</strong>
+                                    <p>USA</p>
+                                </div>
+                            </div>
+                            <div class="footer-partner-item">
+                                <div class="footer-partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="footer-partner-info">
+                                    <strong>Brigitte Hannah Cambrier</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="footer-partner-item">
+                                <div class="footer-partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="footer-partner-info">
+                                    <strong>Sandrine Foucault</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="footer-partner-item">
+                                <div class="footer-partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="footer-partner-info">
+                                    <strong>Anne Gaelle</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="footer-partner-item">
+                                <div class="footer-partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="footer-partner-info">
+                                    <strong>Murielle Boulard</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                            <div class="footer-partner-item">
+                                <div class="footer-partner-logo">
+                                    <i class="fas fa-user" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="footer-partner-info">
+                                    <strong>Kendal Roy</strong>
+                                    <p>Partenaire</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="legal-links">
+                    <a href="mentions_legales.html">Mentions légales</a>
+                    <a href="confidentialite.html">Politique de confidentialité</a>
+                </div>
+                <a href="don.html" class="don-link">Faire un Don</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const menu = document.querySelector('.menu');
+            
+            hamburger.addEventListener('click', function() {
+                menu.classList.toggle('active');
+            });
+            
+            // Fermer le menu en cliquant à l'extérieur
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.navbar')) {
+                    menu.classList.remove('active');
+                }
+            });
+            
+            // Fermer le menu en redimensionnant la fenêtre
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    menu.classList.remove('active');
+                }
+            });
+            
+            // Animation pour les cartes partenaires au défilement
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Appliquer l'animation aux cartes partenaires
+            const partnerCategories = document.querySelectorAll('.partner-category');
+            partnerCategories.forEach(category => {
+                category.style.opacity = '0';
+                category.style.transform = 'translateY(20px)';
+                category.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(category);
+            });
+        });
+    </script>
+</body>
+</html>
